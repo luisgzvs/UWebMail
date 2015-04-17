@@ -22,8 +22,7 @@
             </p>
             <ul class="nav">
               <li><a href="<?php echo base_url(); ?>">Home</a></li>
-               <?php if($this->session->userdata('logged_in')) : ?>
-                    <li><a href="<?php echo base_url(); ?>lists">My Lists</a></li>  
+               <?php if($this->session->userdata('logged_in')) : ?>                    
                <?php endif; ?>
             </ul>
           </div><!--/.nav-collapse -->
@@ -47,8 +46,7 @@
 			<?php $this->load->view($main_content); ?>
         </div><!--/span-->
 		</div><!--/row-->
-      <hr>
-
+      <hr>      
     </div><!--/.fluid-container-->
 </body>
 </html>

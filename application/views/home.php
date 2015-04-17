@@ -9,6 +9,5 @@
     <?php echo '<p class="text-error">' .$this->session->flashdata('need_login') . '</p>'; ?>
 <?php endif; ?>
 
-<h1>Welcome to UWebMail!</h1>
 <?php if($this->session->userdata('logged_in')) : ?>
 	<?php endif; ?>

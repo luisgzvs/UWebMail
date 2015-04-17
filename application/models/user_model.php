@@ -10,6 +10,7 @@ class User_model extends CI_Model{
             'password'         => md5($this->input->post('password'))
         );
 
+
         $insert = $this->db->insert('users', $new_member_insert);
         return $insert;
     }
@@ -29,5 +30,5 @@ class User_model extends CI_Model{
             return false;
         }
     }
-    
+        
 }
