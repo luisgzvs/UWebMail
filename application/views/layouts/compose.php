@@ -5,10 +5,10 @@
 </head>
 <body>
 
-<form name="compose" method="GET" action="<?php echo site_url('emails/insertar'); ?>">
+<form name="compose" method="GET" action="<?php echo site_url('emails/insert'); ?>">
   <a class="mails" href="<?php echo base_url(); ?>">Home</a>
   <a class="mails" href="<?php echo base_url(); ?>emails/get_all">Drafts</a>
-  <a class="mails" href="<?php echo base_url(); ?>emails/load_sent_view">SentMail</a>
+  <a class="mails" href="<?php echo base_url(); ?>emails/get_sent">SentMail</a>
   <br><br>
 
   To:      <input class="to" type="email" name="to">

@@ -1,9 +1,5 @@
 <?php
 
-date_default_timezone_set('Etc/UTC');
-require 'application/libraries/phpMailer/PHPMailerAutoload.php';
-require 'application/libraries/phpMailer/class.phpmailer.php';
-
 class Users extends CI_Controller{
     
     public function register(){
@@ -25,41 +21,6 @@ class Users extends CI_Controller{
         //Validation has ran and passed    
         } else {
            if($this->User_model->create_member()){
-                
-          //Create a new PHPMailer instance
-          $mail = new PHPMailer;
-          $mail->isSMTP();
-          $mail->Host = "smtp.gmail.com";
-          $mail->Port = 587;
-          $mail->SMTPDebug  = 2;
-          //Whether to use SMTP authentication
-          $mail->SMTPAuth = true;
-          //Username to use for SMTP authentication
-          $mail->Username = "testinguwebmail@gmail.com";
-          //Password to use for SMTP authentication
-          $mail->Password = "uwebmail1515";
-          //Set who the message is to be sent from
-          $mail->setFrom('nonreply@uwebmail.com', 'First Last');
-          //Set who the message is to be sent to
-          $mail->addAddress('luisgzvs@gmail.com', 'Test');
-          //Set the subject line
-          $mail->Subject = 'UWEbMail verification';      
-          //Read an HTML message body from an external file, convert referenced images to embedded,
-          //convert HTML into a basic plain-text alternative body
-          $mail->msgHTML('This is a plain-text message body');
-
-          //Replace the plain text body with one created manually
-          $mail->AltBody = 'This is a plain-text message body';
-
-          
-          //send the message, check for errors
-          if (!$mail->send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-          } else {
-            echo "Message sent!";
-          }
-
-          //esto ocasiona que no se ejecute el codigo anterior o al menos que no se muestren los mensajes
 
           $this->session->set_flashdata('registered', 'You are now registered, please confirm your account');
           redirect('home/index');

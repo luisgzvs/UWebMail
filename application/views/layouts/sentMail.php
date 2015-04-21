@@ -11,6 +11,13 @@
   <div id="container">
 	<div id="body">
 		<p>Sent mails:</p>
+		<?php foreach ($drafts as $draft) {
+			echo "From: {$draft->from} " . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";	
+			echo "To: {$draft->to} " . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";	
+			echo "<a href='get_message_sent/$draft->id'>{$draft->subject}</a>" . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";				
+			echo "<a href='delete/$draft->id'> delete </a>";
+			echo "<br/>";
+		} ?>
 	</div>	
 
 </body>

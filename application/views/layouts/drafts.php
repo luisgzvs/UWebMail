@@ -6,14 +6,15 @@
 <body>
 
   <a class="mails" href="<?php echo base_url(); ?>">Home</a>
-  <a class="mails" href="<?php echo base_url(); ?>emails/load_sent_view">SentMail</a>
+  <a class="mails" href="<?php echo base_url(); ?>emails/get_sent">SentMail</a>
   
   <div id="container">
 	<div id="body">
 		<p>This is the list of drafts:</p>
 		<?php foreach ($drafts as $draft) {
+			echo "From: {$draft->from} " . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";	
 			echo "To: {$draft->to} " . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";	
-			echo "<a href='index'>{$draft->subject}</a>" . 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			echo "<a href='get_message/$draft->id'>{$draft->subject}</a>" . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";				
 			echo "<a href='delete/$draft->id'> delete </a>";
 			echo "<br/>";
 		} ?>
