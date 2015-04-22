@@ -30,29 +30,32 @@ class Mail_Cronjob extends CI_Controller{
 
 	public function sendMail($from,$to,$subject,$message){
 		
-		$sender_email='testinguwebmail@gmail.com';
-		$user_password='uwebmail1515';
-		$username='non-reply';
-		        
-        // Configure email library
-		$config['protocol'] = 'smtp';
-		$config['smtp_host'] = 'ssl://smtp.googlemail.com';
-		$config['smtp_port'] = 465;
-		$config['smtp_user'] = $sender_email;
-		$config['smtp_pass'] = $user_password;
+		/Enviar correo
+           $this->load->library('email');
 
-		// Load email library and passing configured values to email library
-		$this->load->library('email', $config);
-		$this->email->set_newline("\r\n");
+          $config['protocol']   = 'smtp';
+          $config['charset']    = 'utf-8';
+          $config['smtp_host']  = 'ssl://smtp.googlemail.com';
+          $config['smtp_port']  = '465';
+          $config['mailtype']   = 'html';
+          $config['smtp_user']  = 'testinguwebmail@gmail.com';
+          $config['smtp_pass']  = 'uwebmail1515';
+          $config['newline']    = "\r\n";
+          $config['starttls']   = TRUE;
 
-		// Sender email address
-		$this->email->from($sender_email, $username);
-		// Receiver email address
+                    
+          $this->email->initialize($config);
+          $this->email->clear();
+
+
+        $this->email->from('testinguwebmail@uwmail.com','UWebMail');
 		$this->email->to($to);
-		// Subject of email
+      	// Subject of email
 		$this->email->subject($subject);
 		// Message in email
 		$this->email->message($message);
+   
+        $this->email->send();
 
 		if ($this->email->send()) {
 		$data['message_display'] = 'Email Successfully Send !';
