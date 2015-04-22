@@ -29,6 +29,22 @@ class Users extends CI_Controller{
         }
     }
     
+     public function confirm($code)
+    {
+      $res = $this->user_model->very('code',$code);
+      if($res == false)
+      {
+        echo "This user not exist!";
+      }
+      else{
+
+        $this->users_model->update_user($code);
+        echo "User confirmed!.<br>
+            <a href='".base_url()."users/login'>Login</a>";
+
+    }
+  }
+    
     
     public function login(){
         $this->form_validation->set_rules('username','Username','trim|required|min_length[4]|xss_clean');      
